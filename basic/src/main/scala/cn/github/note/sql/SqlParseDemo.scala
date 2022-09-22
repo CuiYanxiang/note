@@ -4,6 +4,7 @@ import com.alibaba.druid.sql.SQLUtils
 import com.alibaba.druid.sql.ast.SQLExpr
 import com.alibaba.druid.sql.ast.expr._
 import com.alibaba.druid.sql.ast.statement._
+import com.alibaba.druid.sql.visitor.SchemaStatVisitor
 import com.alibaba.druid.util.JdbcConstants
 
 import scala.collection.JavaConverters._
@@ -99,6 +100,25 @@ object SqlParseDemo {
         case insert: SQLInsertStatement   =>
         case _                            =>
       }
+
+      println()
+      println()
+      println("================分割线===============")
+      val visitor: SchemaStatVisitor = SQLUtils.createSchemaStatVisitor(JdbcConstants.MYSQL)
+      statements.accept(visitor)
+      println(s"使用visitor数据表: ${visitor.getTables}")
+      visitor.getColumns.forEach { column =>
+        if (column.isSelect) {
+          println(s"查询的字段: ${column.getFullName} , ${column.getName}")
+        }
+      }
+      println(s"使用visitor条件: ${visitor.getConditions}")
+      println(s"使用visitor分组: ${visitor.getGroupByColumns}")
+      println(s"使用visitor排序: ${visitor.getOrderByColumns}")
+      val queryBlock = statements.asInstanceOf[SQLSelectStatement].getSelect.getQuery.asInstanceOf[SQLSelectQueryBlock]
+      queryBlock.addCondition("a.score = 100")
+      queryBlock.removeCondition("a.id = 1")
+      println(s"更改条件后sql：$queryBlock")
 
     } catch {
       case e: Exception =>
