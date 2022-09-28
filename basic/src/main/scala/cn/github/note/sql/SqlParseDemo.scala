@@ -26,6 +26,7 @@ object SqlParseDemo {
        |ORDER BY a.id DESC,a.score ASC
        |LIMIT 3, 10
        |""".stripMargin
+
   def main(args: Array[String]): Unit = {
     try {
       val statements = SQLUtils.parseSingleStatement(sql, JdbcConstants.MYSQL, false)
@@ -37,7 +38,7 @@ object SqlParseDemo {
             // 非union查询
             case sqlSelectQueryBlock: SQLSelectQueryBlock =>
               val selectList = sqlSelectQueryBlock.getSelectList
-              println(s"字段信息：[${selectList.toArray.mkString(", ")}]")
+              println(s"字段信息：$selectList")
               val table: SQLTableSource = sqlSelectQueryBlock.getFrom
               println(s"表信息：$table")
               table match {
@@ -119,6 +120,10 @@ object SqlParseDemo {
       queryBlock.addCondition("a.score = 100")
       queryBlock.removeCondition("a.id = 1")
       println(s"更改条件后sql：$queryBlock")
+      println()
+
+      val sqlStr = SQLUtils.toSQLString(statements, JdbcConstants.CLICKHOUSE, new SQLUtils.FormatOption(true, false))
+      println(s"sql: $sqlStr")
 
     } catch {
       case e: Exception =>
