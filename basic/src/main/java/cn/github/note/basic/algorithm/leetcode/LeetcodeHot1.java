@@ -24,8 +24,8 @@ import java.util.HashMap;
 public class LeetcodeHot1 {
 
     public static void main(String[] args) {
-        int[] nums = {3, 2, 4};
-        int[] res = twoSum(nums, 6);
+        int[] nums = {2, 7, 11, 15};
+        int[] res = twoSum2(nums, 9);
         Arrays.stream(res).forEach(System.out::println);
     }
 
@@ -55,10 +55,27 @@ public class LeetcodeHot1 {
 
 
     /**
+     * 1.循环一遍，将 target - 当前值 = 差值，存入map(差值,index)
+     * 2.每次查看当前值在map内是否存在，存在则返回map对应value 与 当前index
+     * 时间复杂度 O(n)
+     */
+    static int[] twoSum2(int[] nums, int target) {
+        int length = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < length; i++) {
+            if (map.containsKey(nums[i])) {
+                return new int[]{map.get(nums[i]), i};
+            }
+            map.put(target - nums[i], i);
+        }
+        return null;
+    }
+
+    /**
      * 1.两重循环，两值相加是否等于target
      * 时间复杂度 O(n²)
      */
-    static int[] twoSum2(int[] nums, int target) {
+    static int[] twoSum3(int[] nums, int target) {
         int[] res = new int[2];
         int length = nums.length;
         for (int i = 0; i < length; i++) {
