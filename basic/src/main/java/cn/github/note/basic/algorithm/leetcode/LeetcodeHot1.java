@@ -25,7 +25,7 @@ public class LeetcodeHot1 {
 
     public static void main(String[] args) {
         int[] nums = {3, 2, 4};
-        int[] res = twoSum2(nums, 6);
+        int[] res = twoSum(nums, 6);
         Arrays.stream(res).forEach(System.out::println);
     }
 
