@@ -1,6 +1,8 @@
 package cn.github.note.basic.algorithm.leetcode;
 
 
+import java.util.Arrays;
+
 /**
  * 2. 两数相加
  * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
@@ -28,20 +30,63 @@ package cn.github.note.basic.algorithm.leetcode;
 public class LeetcodeHot2 {
 
     public static void main(String[] args) {
+        int[] arr1 = {2, 4, 3};
+        int[] arr2 = {5, 6, 4};
+
+        ListNode l1 = new ListNode(0);
+        ListNode pre = l1;
+        for (int i : arr1) {
+            ListNode node = new ListNode(i);
+            pre.next = node;
+            pre = node;
+        }
+
+        ListNode l2 = new ListNode(0);
+        ListNode pre2 = l2;
+        for (int i : arr2) {
+            ListNode node = new ListNode(i);
+            pre2.next = node;
+            pre2 = node;
+        }
+
+        ListNode addTwoNumbers = addTwoNumbers(l1.next, l2.next);
+
+        System.out.println(addTwoNumbers.val);
+        System.out.println(addTwoNumbers.next.val);
+        System.out.println(addTwoNumbers.next.next.val);
 
     }
 
     static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return null;
+        ListNode res = new ListNode(0);
+        int sum = 0; // 结果
+        int tmp = 0; // 进位
+        ListNode pre = res;
+        while (l1 != null || l2 != null || tmp != 0) {
+            int l1Val = l1 == null ? 0 : l1.val;
+            int l2Val = l2 == null ? 0 : l2.val;
+
+            sum = l1Val + l2Val + tmp;
+            tmp = sum / 10;  // 取进位数 1
+
+            ListNode node = new ListNode(sum % 10); // 去结果
+
+            pre.next = node;
+            pre = node;
+
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
+        }
+        return res.next;
     }
 }
 
 class ListNode {
-    int value;
+    int val;
     ListNode next;
 
     ListNode(int x) {
-        this.value = x;
+        this.val = x;
     }
 
 }
