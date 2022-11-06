@@ -56,6 +56,11 @@ public class LeetcodeHot21 {
     }
 
 
+    /**
+     * 迭代法
+     * 链表val两个对比，哪个值小放pre.next,
+     * 当某个listNode为null,跳出while,将另一个listNade放pre.next
+     */
     static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null && list2 == null) {
             return new ListNode(0);
@@ -74,5 +79,21 @@ public class LeetcodeHot21 {
         }
         pre.next = list1 == null ? list2 : list1;
         return res.next;
+    }
+
+    /**
+     * 递归法
+     */
+    static ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+        if (l1 == null || l2 == null) {
+            return l1 == null ? l2 : l1;
+        }
+        if (l1.val <= l2.val) {
+            l1.next = mergeTwoLists2(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists2(l1, l2.next);
+            return l2;
+        }
     }
 }
