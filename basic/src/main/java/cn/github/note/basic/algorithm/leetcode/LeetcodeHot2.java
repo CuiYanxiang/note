@@ -1,7 +1,7 @@
 package cn.github.note.basic.algorithm.leetcode;
 
 
-import java.util.Arrays;
+import cn.github.note.basic.algorithm.model.ListNode;
 
 /**
  * 2. 两数相加
@@ -81,12 +81,3 @@ public class LeetcodeHot2 {
     }
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        this.val = x;
-    }
-
-}

@@ -136,8 +136,9 @@ final Collection<OperatorChainInfo> initialEntryPoints=
 
 * 从Source开始，Source与下游的FlatMap不可连接，Source是起始节点，自己成为一个JobVertex。
 * 此时开始一个新的连接分析，FlatMap是起始节点，与下游的KeyedAgg也不可以连接，那么FlatMap自己成为一个JobVertext。
-*
-此时开始一个新的连接分析，KeyedAgg是起始节点，并且与下游的Sink可以连接，那么递归地分析Sink节点，构造Sink与其下游是否可以连接，因为Sink没有下游，所以KeyedAgg和Sink节点连接在一起，共同构成了一个JobVertex。在这个JobVertex中，KeyedAgg是起始节点，index编号为0，Sink节点index编号为1。
+* 此时开始一个新的连接分析，KeyedAgg是起始节点，并且与下游的Sink可以连接，那么递归地分析Sink节点，构造Sink与其下游是否可以连接，因为Sink没有下游，所以KeyedAgg和Sink节点连接在一起，共同构成了一个JobVertex。在这个JobVertex中，KeyedAgg是起始节点，index编号为0，Sink节点index编号为1。
+   
+
 
 ## 执行图
 
