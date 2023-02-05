@@ -4,7 +4,12 @@ import com.fasterxml.jackson.core.JsonParser.Feature
 import com.fasterxml.jackson.databind.{ DeserializationFeature, ObjectMapper }
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.catalyst.FunctionIdentifier
+import org.apache.spark.sql.catalyst.analysis.FunctionRegistry
+import org.apache.spark.sql.catalyst.expressions.aggregate.AggregateFunction
+import org.apache.spark.sql.{ CountWindowFunction, SparkSession }
+
+import scala.reflect.ClassTag
 
 object Demo {
 
@@ -31,9 +36,23 @@ object Demo {
 
     val mapper = new ObjectMapper()
     mapper.registerModule(DefaultScalaModule)
+    val employee = "employee" + Thread.currentThread().getId
     import spark.implicits._
-    val df = spark.read
-      .text("spark/src/main/resources/data.json")
-    df.show()
+    spark.read
+      .json("spark/src/main/resources/data.json")
+      .as[Employee]
+      .toDF()
+      .createOrReplaceTempView(employee)
+
+//    spark.udf.register[CountWindowFunction]("count_window")
+
+    val sql = s"""
+                 |select *
+                 |from $employee
+                 |""".stripMargin
+    spark
+      .sql(sql)
+      .show()
   }
 }
+case class Employee(id: Long, name: String, salary: Long)
