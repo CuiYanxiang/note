@@ -44,7 +44,7 @@ object Demo {
       .toDF()
       .createOrReplaceTempView(employee)
 
-//    spark.udf.register[CountWindowFunction]("count_window")
+    spark.udf.register[CountWindowFunction]("count_window")
 
     val sql = s"""
                  |select *
