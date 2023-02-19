@@ -2,6 +2,7 @@ package cn.github.note.basic.algorithm.leetcode;
 
 
 import cn.github.note.basic.algorithm.model.TreeNode;
+import cn.github.note.basic.utils.TreeNodeUtil;
 
 /**
  * 101. 对称二叉树
@@ -29,11 +30,19 @@ import cn.github.note.basic.algorithm.model.TreeNode;
 public class LeetcodeHot101 {
 
     public static void main(String[] args) {
-
+        Integer[] arr = {1, 2, 2, 3, 4, 4, 3};
+        TreeNode node = TreeNodeUtil.createTreeNode(arr);
+        System.out.println(isSymmetric(node, node));
     }
 
-    static boolean isSymmetric(TreeNode root) {
-        return false;
+    static boolean isSymmetric(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null || right == null) {
+            return false;
+        }
+        return left.val == right.val && isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
     }
 
 
