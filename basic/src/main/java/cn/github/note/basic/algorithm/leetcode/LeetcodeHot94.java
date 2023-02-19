@@ -2,8 +2,9 @@ package cn.github.note.basic.algorithm.leetcode;
 
 
 import cn.github.note.basic.algorithm.model.TreeNode;
+import cn.github.note.basic.utils.TreeNodeUtil;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,11 +33,26 @@ import java.util.List;
 public class LeetcodeHot94 {
 
     public static void main(String[] args) {
-
+        Integer[] arr = {1, null, 2, 3};
+        TreeNode node = TreeNodeUtil.createTreeNode(arr);
+        List<Integer> list = inorderTraversal(node);
+        list.forEach(System.out::println);
     }
 
     static List<Integer> inorderTraversal(TreeNode root) {
-        return Arrays.asList(0);
+        List<Integer> list = new ArrayList<>();
+        inorder(root, list);
+        return list;
+    }
+
+
+    public static void inorder(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left, res);
+        res.add(root.val);
+        inorder(root.right, res);
     }
 
 
