@@ -1,6 +1,9 @@
 package cn.github.note.basic.java8.function;
 
+import java.util.Arrays;
 import java.util.function.Function;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class FunctionInterfaceDemo {
     public static void main(String[] args) {
@@ -25,6 +28,13 @@ class FunctionInterfaceDemo {
                 x -> x + "222",
                 s -> Integer.parseInt(s)
         );
+
+        System.out.println("--------柯里化---------");
+        Function<String, Function<String, String>> sum = a -> b -> a + "_" + b;
+        Function<String, String> a = sum.apply("hello");
+        String two = a.apply("word");
+        System.out.println(two);
+
     }
 
     static void show(IFuncInterface fun) {
