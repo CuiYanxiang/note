@@ -74,13 +74,13 @@ object SqlParseDemo {
               // 获取分组
               val groupBy: SQLSelectGroupByClause = sqlSelectQueryBlock.getGroupBy
               println("分组信息: ========")
-              groupBy.getItems.forEach(println)
+              groupBy.getItems.asScala.foreach(println)
               println(s"分组条件: ${groupBy.getHaving.toString}")
               println()
               // 获取排序
               val orderBy = sqlSelectQueryBlock.getOrderBy
               println("排序信息: ========")
-              orderBy.getItems.forEach { item =>
+              orderBy.getItems.asScala.foreach { item =>
                 println(s"排序字段: ${item.getExpr}")
                 println(s"排序类型: ${item.getType.name}")
               }
@@ -108,7 +108,7 @@ object SqlParseDemo {
       val visitor: SchemaStatVisitor = SQLUtils.createSchemaStatVisitor(JdbcConstants.MYSQL)
       statements.accept(visitor)
       println(s"使用visitor数据表: ${visitor.getTables}")
-      visitor.getColumns.forEach { column =>
+      visitor.getColumns.asScala.foreach { column =>
         if (column.isSelect) {
           println(s"查询的字段: ${column.getFullName} , ${column.getName}")
         }

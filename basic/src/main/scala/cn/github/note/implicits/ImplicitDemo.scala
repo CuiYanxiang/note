@@ -5,13 +5,13 @@ import java.util.Locale
 object ImplicitDemo {
 
   def main(args: Array[String]): Unit = {
-//    test1("hello word")(Locale.CHINA)
+    test1("hello word")(Locale.CHINA)
 
-//    val fun = test2("hello-") _
-//    println(fun("world"))
+    val fun = test2("hello-") _
+    println(fun("world"))
 
-//    implicit val china = Locale.UK
-//    test1("hello world2")
+    implicit val china = Locale.UK
+    test1("hello world2")
 
     /**
       * 使用implicitly自动搜索隐式参数，因为implicit si: Show[Int], ss: Show[String]都是在Show的伴生对象中。
@@ -37,13 +37,13 @@ object ImplicitDemo {
 //    println(ret4)
 
     //在这里，使用def与泛型，只需要定义一个隐式值
-    implicit def typeShow[T]: Show5[T] = (s: T) => s"hello implicit 5 ${s.toString}"
+//    implicit def typeShow[T]: Show5[T] = (s: T) => s"hello implicit 5 ${s.toString}"
     //此时根据最相近匹配，会继续使用 stringShow2 intShow2的，typeShow隐式无效
-    implicit val stringShow2: Show5[Int] = (s: Int) => (s - 10).toString
-    implicit val intShow2: Show5[String] = (s: String) => s + "_good"
-    val show5                            = Person5.PersonShow5
-    val ret5                             = show5.show(Person5("kaer", 22))
-    println(ret5)
+//    implicit val stringShow2: Show5[Int] = (s: Int) => (s - 10).toString
+//    implicit val intShow2: Show5[String] = (s: String) => s + "_good"
+//    val show5                            = Person5.PersonShow5
+//    val ret5                             = show5.show(Person5("kaer", 22))
+//    println(ret5)
 
 //    implicit def typeShow2[T]: Show6[T] = (s: T) => s"hello implicit 6 ${s.toString.toUpperCase}"
 //    val show6                           = Person6.PersonShow6
