@@ -133,14 +133,54 @@ public StreamMap(MapFunction<IN, OUT> mapper) {
 #### 处理函数(ProcessFunction)
 > RichFunction -> AbstractRichFunction -> (ProcessFunction、ProcessWindowFunction、KeyedProcessFunction、RichFilterFunction等)
 
+>基本构建块包含 1.事件(数据流元素)  2.状态(容错和一致性) 3.定时器(事件时间和处理时间)
 
+1. 双流Join(CoProcessFunction)
+```
+即时双流Join: 
+1.创建一个State对象 
+2.接收输入流1事件后更新State 
+3.接收到输入流2事件后遍历State,根据Join条件进行匹配，匹配后发送到下游
+```
+![双流即时JoIn.png](../img/双流即时JoIn.png)
 
+```text
+双流延迟Join:
+1.创建2个State对象，分别缓存两个输入流
+2.创建一个定时器，等待数据到达，定时延迟触发Join计算
+3.接收输入流1更新State
+4.接收输入流2更新State
+5.定时器遍历两个State,根据Join条件进行匹配，匹配后发送下游
+```
+![双流延迟Join.png](../img/双流延迟Join.png)
 
+```text
+延迟计算,与上边不同的关键是Watermark和Window,使用Window暂存数据,使用Watermark触发Window的计算
+```
+![延迟计算过程.png](../img/延迟计算过程.png)
 
+#### 数据源函数(SourceFunction)
+1. 生命周期管理：AbstractRichFunction 包含open、close、cancel,包含初始化、清理等
+2. 读取数据：持续从外部存储读取数据
+3. 向下游发送数据
+4. 发送Watermark：生成watermark并向下游发送
+5. 空闲标记：当读取不到数据，则Task标记为空闲，向下游发送Status#idle,阻止Watermark向下游传递
 
+#### 检查点函数(CheckpointedFunction)
+1. initializeState:负责初始化State,执行从上一个检查点恢复状态
+2. snapshotStat: 用于备份保存状态到外部存储
 
+### 数据分区(Partition)
+分布式计算就是把作业分成子任务Task,将不同数据交给不同Task计算，Partition就是把数据集切分成块，每一块数据存储在不同的机器上。StreamPartition抽象接口
 
+![数据分区体系.png](../img/数据分区体系.png)
+1. 自定义分区(CustomPartitionerWrapper)：用户自定义分区函数，为每个元素选择目标分区
+2. ForwardPartitioner：用于同一个OperatorChain中上下游算子之间的数据转发，实际数据是直接传递到下游
+3. ShufflePartitioner: 随机将元素进行分区，下游Task能均匀获取数据
+4. ReblancePartitioner: 以ROUND-ROBIN方式为每个元素分配分区，下游Task均匀获得数据，避免数据倾斜
+5. RescalingPartitioner: 根据下游Task数量进行分区，使用ROUND-ROBIN选择下游，如上游有2个Source，下游有6个Map,每个Source会分配3个固定到下游Map,不会向未分配分区写数据。
+6. BroadcastPartitioner：将记录广播给所有分区，即有N个分区，就把数据复制N份
+7. KeyGroupStreamPartitioner:应用KeyedStream,根据KeyGroup索引编号进行分区。
 
-
-
-
+### 分布式ID(AbstractID)
+应用Flink作业、资源管理、作业管理器、资源管理器、TaskManger等各自的身份标识。
