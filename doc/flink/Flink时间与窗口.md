@@ -77,7 +77,7 @@ Flink自己实现了优先级队列来管理Timer，共有2种实现。
 2）基于RocksDB的优先级队列：分为Cache+RocksDB量级，Cache中保存了前N个元素，其余的保存在RocksDB中。写入的时候采用Write-through策略，即写入Cache的同时要更新RocksDB中的数据，可能需要访问磁盘。基于堆内存的优先级队列比基于RocksDB的优先级队列性能好，但是受限于内存大小，无法容纳太多的数据；基于RocksDB的优先级队列牺牲了部分性能，可以容纳大量的数据。
 ```
 ### 窗口实现
-包含三类窗口
+
 ![WindowOperator数据处理.png](../img/WindowOperator数据处理.png)
 #### 时间窗口(TimeWindow)
 > 按时间类型分为处理时间窗口和事件时间窗口
