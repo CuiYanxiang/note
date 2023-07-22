@@ -25,23 +25,21 @@
 
 ### StreamGraph对象
 
-1. StreamNode
-   StreamNode是StreamGraph中的节点，从Transformatition转换而来，可以理解表示一个算子，可以有多个输入，也可以有多个输出
-2. StreamEdge
-   StreamEdge是StreamGraph中的节点，用来连接StreamNode，StreamEdge包含旁路输出、分区器、字段筛选输出
+1. StreamNode：StreamGraph中的节点，从Transformation转换而来，可以理解表示一个算子，可以有多个输入，也可以有多个输出
+2. StreamEdge：是StreamGraph中的节点，用来连接StreamNode，StreamEdge包含旁路输出、分区器、字段筛选输出
 
 ### StreamGraph生成过程
 
     在flink client中生成，flink应用main方法，用户编写业务逻辑组装成Transformation流水线，最终调用StreamExecutionEnvironment.execute()开始触发StreamGraph构建
 
 ```java
-    public StreamGraph getStreamGraph(boolean clearTransformations){
-        StreamGraph streamGraph=getStreamGraphGenerator(transformations).generate();
+ public StreamGraph getStreamGraph(boolean clearTransformations){
+    StreamGraph streamGraph=getStreamGraphGenerator(transformations).generate();
         if(clearTransformations){
-        transformations.clear();
+            transformations.clear();
         }
-        return streamGraph;
-        }
+    return streamGraph;
+}
 ```
 
 ## 作业图(JobGraph)
@@ -64,12 +62,11 @@
         jobGraph.enableApproximateLocalRecovery(
         streamGraph.getCheckpointConfig().isApproximateLocalRecoveryEnabled());
         // 为每个节点生成确定的hash id 作为唯一标识，在提交和执行过程中保持不变
-        Map<Integer, byte[]>hashes=
-        defaultStreamGraphHasher.traverseStreamGraphAndGenerateHashes(streamGraph);
+        Map<Integer, byte[]> hashes = defaultStreamGraphHasher.traverseStreamGraphAndGenerateHashes(streamGraph);
 
         List<Map<Integer, byte[]>>legacyHashes=new ArrayList<>(legacyStreamGraphHashers.size());
         for(StreamGraphHasher hasher:legacyStreamGraphHashers){
-        legacyHashes.add(hasher.traverseStreamGraphAndGenerateHashes(streamGraph));
+             legacyHashes.add(hasher.traverseStreamGraphAndGenerateHashes(streamGraph));
         }
         // 对streamGraph进行转换，生成JobGraph图
         setChaining(hashes,legacyHashes);
@@ -140,7 +137,7 @@ final Collection<OperatorChainInfo> initialEntryPoints=
    
 
 
-## 执行图
+## 执行图(ExecutionGraph)
 
 
 
