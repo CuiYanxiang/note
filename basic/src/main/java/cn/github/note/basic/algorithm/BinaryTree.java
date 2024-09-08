@@ -3,25 +3,26 @@ package cn.github.note.basic.algorithm;
 import cn.github.note.basic.algorithm.model.TreeNode;
 import cn.github.note.basic.utils.TreeNodeUtil;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /** 1 / \ 2 2 /\ /\ 3 4 4 3 */
 public class BinaryTree {
     public static void main(String[] args) {
-        Integer[] arr = {1, 2, 2, 3, 4, 4, 3};
-        TreeNode node = TreeNodeUtil.createTreeNode(arr);
-        List<Integer> res = new ArrayList<>();
+        char a = 'd';
+        //        Integer[] arr = {1, 2, 2, 3, 4, 4, 3};
+        //        TreeNode node = TreeNodeUtil.createTreeNode(arr);
+        //        List<Integer> res = new ArrayList<>();
         //        pre(node, res);  //1, 2, 3, 4, 2, 4, 3
         //        mid(node, res);  //3, 2, 4, 1, 4, 2, 3
         //        next(node, res);  //3, 4, 2, 4, 3, 2, 1
         //        System.out.println(res);
 
-//        System.out.println(preIter2(node));
-//        System.out.println(midIter(node));
-        System.out.println(nextIter(node));
+        //        System.out.println(preIter2(node));
+        //        System.out.println(midIter(node));
+        //        System.out.println(nextIter(node));
+        Integer[] nums = {1, 3, 4, 2, 2};
+
+
     }
 
     static void pre(TreeNode root, List<Integer> res) {

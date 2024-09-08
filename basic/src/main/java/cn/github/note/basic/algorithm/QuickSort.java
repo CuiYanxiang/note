@@ -4,9 +4,13 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = {6, 8, 3, 7, 9, 6, 1};
-        quickSort(arr);
-        Arrays.stream(arr).forEach(System.out::println);
+//        int[] arr = {6, 8, 3, 7, 9, 6, 1};
+//        quickSort(arr);
+//        Arrays.stream(arr).forEach(System.out::println);
+
+        String a = "a";
+        String b = "d";
+        System.out.println(a.toCharArray()[0] > b.toCharArray()[0]);
     }
 
     static void quickSort(int[] arr) {
@@ -22,9 +26,7 @@ public class QuickSort {
             int[] p = partition(arr, l, r);
             quickSort(arr, l, p[0] - 1);
             quickSort(arr, p[1] + 1, r);
-
         }
-
     }
 
     private static int[] partition(int[] arr, int l, int r) {
@@ -40,7 +42,7 @@ public class QuickSort {
             }
         }
         swap(arr, more, r);
-        return new int[]{less + 1, more};
+        return new int[] {less + 1, more};
     }
 
     static void swap(int[] arr, int i, int j) {

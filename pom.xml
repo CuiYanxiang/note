@@ -13,17 +13,18 @@
         <module>akka</module>
         <module>flink</module>
         <module>spark</module>
+        <module>arrow</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
         <akka.version>2.5.32</akka.version>
-        <scala.version>2.11.12</scala.version>
-        <flink.version>1.14.5</flink.version>
-        <spark.version>2.4.6-GIO1.0.5</spark.version>
-        <jackson.version>2.9.10</jackson.version>
-        <jackson.databind.version>2.9.10.8</jackson.databind.version>
-        <scala.binary.version>2.11</scala.binary.version>
+        <scala.version>2.12.18</scala.version>
+        <flink.version>1.20.0</flink.version>
+        <spark.version>3.5.1</spark.version>
+        <jackson.version>2.17.2</jackson.version>
+        <jackson.databind.version>2.17.2</jackson.databind.version>
+        <scala.binary.version>2.12</scala.binary.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
@@ -52,13 +53,13 @@
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-scala_2.11</artifactId>
+                <artifactId>jackson-module-scala_2.12</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>${jackson.databind.version}</version>
+                <version>${jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -73,7 +74,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>29.0-jre</version>
+                <version>33.2.1-jre</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
