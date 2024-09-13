@@ -12,7 +12,7 @@ object IpcReaderDemo {
   def main(args: Array[String]): Unit = {
 
     val rootAllocator    = new RootAllocator()
-    val file             = new File("data.arrow")
+    val file             = new File("user.arrow")
     val fileOutputStream = new FileInputStream(file)
     val reader           = new ArrowFileReader(fileOutputStream.getChannel, rootAllocator)
 

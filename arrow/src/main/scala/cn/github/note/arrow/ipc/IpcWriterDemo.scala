@@ -10,8 +10,8 @@ import scala.collection.JavaConverters.asJavaIterableConverter
 
 object IpcWriterDemo {
   def main(args: Array[String]): Unit = {
-    val age  = new Field("age", FieldType.nullable(new ArrowType.Int(32, true)), null)
     val name = new Field("name", FieldType.nullable(new ArrowType.Utf8), null)
+    val age  = new Field("age", FieldType.nullable(new ArrowType.Int(32, true)), null)
 
     val schema        = new Schema(Seq(age, name).asJava, null)
     val rootAllocator = new RootAllocator()
@@ -28,7 +28,7 @@ object IpcWriterDemo {
     nameVector.set(2, "wangwu".getBytes())
     root.setRowCount(3)
 
-    val file             = new File("data.arrow")
+    val file             = new File("user.arrow")
     val fileOutputStream = new FileOutputStream(file)
     val writer           = new ArrowFileWriter(root, null, fileOutputStream.getChannel)
 

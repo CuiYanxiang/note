@@ -42,10 +42,10 @@ object SubstraitDemo {
   }
 
   def getPlan(): Plan = {
-    val sql            = "select name,age from test"
-    val user           = "CREATE TABLE test (name VARCHAR(256),age INT NOT NULL)"
+    val sql            = "select name,age from test where age > 10"
+    val test           = "CREATE TABLE test (name VARCHAR(256),age INT NOT NULL)"
     val sqlToSubstrait = new SqlToSubstrait()
-    sqlToSubstrait.execute(sql, List(user).asJava)
+    sqlToSubstrait.execute(sql, List(test).asJava)
   }
 
 }
