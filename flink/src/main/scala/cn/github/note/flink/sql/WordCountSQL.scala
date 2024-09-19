@@ -7,7 +7,7 @@ import org.apache.flink.table.api.bridge.scala.StreamTableEnvironment
 object WordCountSQL {
   def main(args: Array[String]): Unit = {
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
-    val settings                        = EnvironmentSettings.newInstance().useBlinkPlanner().inStreamingMode().build()
+    val settings                        = EnvironmentSettings.newInstance().inStreamingMode().build()
     val tEnv: StreamTableEnvironment    = StreamTableEnvironment.create(env, settings)
     val sql =
       s"""

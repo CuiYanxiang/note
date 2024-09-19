@@ -9,7 +9,7 @@ object EnvironmentUtils {
 
   def getEnv(): StreamExecutionEnvironment = {
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
-    val settings                        = EnvironmentSettings.newInstance().useBlinkPlanner().inStreamingMode().build()
+    val settings                        = EnvironmentSettings.newInstance().inStreamingMode().build()
     val tEnv: StreamTableEnvironment    = StreamTableEnvironment.create(env, settings)
     env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
     env
