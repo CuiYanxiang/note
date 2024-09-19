@@ -34,4 +34,5 @@ case class CountWindowFunction(name: Expression) extends AggregateWindowFunction
   // 最终值
   override val evaluateExpression: Expression = value
 
+  override protected def withNewChildrenInternal(newChildren: IndexedSeq[Expression]): Expression = this
 }

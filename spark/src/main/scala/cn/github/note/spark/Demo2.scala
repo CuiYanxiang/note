@@ -1,9 +1,10 @@
 package cn.github.note.spark
 
 import cn.github.note.spark.function.TestUserClassUDWF
+import cn.github.note.spark.register.AggFunctionRegister
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.catalyst.util.StringUtils
-import org.apache.spark.sql.{Row, SparkSession}
+import org.apache.spark.sql.{ Row, SparkSession }
 
 object Demo2 {
 
@@ -21,12 +22,6 @@ object Demo2 {
 
     val spark =
       SparkSession.builder().config(config).getOrCreate()
-    spark.conf.set("spark.driver.cores", "1")
-    spark.conf.set("spark.driver.memory", "1g")
-    spark.conf.set("spark.executor.memory", "1g")
-    spark.conf.set("spark.sql.shuffle.partitions", "3")
-    spark.conf.set("spark.driver.host", "localhost")
-    spark.conf.set("spark.ui.enabled", "true")
 
     val seq = Seq(
       ("a", 111, Map("a1" -> "b1", "a2" -> "b2", "a4" -> "b4")),
@@ -39,28 +34,31 @@ object Demo2 {
     spark
       .createDataFrame(seq)
       .toDF("name", "time", "psmap")
-      .write
-      .format("json")
-      .saveAsTable("merge_map_table")
-    spark.udf.register[TestUserClassUDWF]("MERGE_MAP")
+      .createOrReplaceTempView("merge_map_table")
+
+    AggFunctionRegister.register[TestUserClassUDWF]("merge_map")(spark)
 
     val sql =
       s"""
-         |  select name,
-         |  MERGE_MAP(psmap) OVER(PARTITION BY name ORDER BY time, SIZE(psmap) ) aa,
+         |select
+         |  name,
+         |  merge_map(psmap) OVER(PARTITION BY name ORDER BY time, SIZE(psmap) ) aa,
          |  row_number() OVER(PARTITION BY name ORDER BY time desc, SIZE(psmap) desc ) rn
-         |   from merge_map_table
+         |from merge_map_table
        """.stripMargin
 
-    spark.sql(sql).show(false)
+    val df = spark.sql(sql)
+    df.printSchema()
+    df.show()
 
-    def getFunctions(pattern: String): Seq[Row] = {
-      StringUtils
-        .filterPattern(spark.sessionState.catalog.listFunctions("default").map(_._1.funcName), pattern)
-        .map(Row(_))
-    }
-    val rows: Seq[Row] = getFunctions("merge_map")
-    assert(rows.head.getString(0) == "merge_map")
+//    def getFunctions(pattern: String): Seq[Row] = {
+//      StringUtils
+//        .filterPattern(spark.sessionState.catalog.listFunctions("default").map(_._1.funcName), pattern)
+//        .map(Row(_))
+//    }
+//    val rows: Seq[Row] = getFunctions("merge_map")
+//    println(rows)
+//    assert(rows.head.getString(0) == "merge_map")
 
   }
 }

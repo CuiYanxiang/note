@@ -1,15 +1,10 @@
 package cn.github.note.spark
 
-import com.fasterxml.jackson.core.JsonParser.Feature
+import cn.github.note.spark.register.AggFunctionRegister
 import com.fasterxml.jackson.databind.{ DeserializationFeature, ObjectMapper }
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.catalyst.FunctionIdentifier
-import org.apache.spark.sql.catalyst.analysis.FunctionRegistry
-import org.apache.spark.sql.catalyst.expressions.aggregate.AggregateFunction
 import org.apache.spark.sql.{ CountWindowFunction, SparkSession }
-
-import scala.reflect.ClassTag
 
 object Demo {
 
@@ -27,12 +22,6 @@ object Demo {
 
     val spark =
       SparkSession.builder().config(config).getOrCreate()
-    spark.conf.set("spark.driver.cores", "1")
-    spark.conf.set("spark.driver.memory", "1g")
-    spark.conf.set("spark.executor.memory", "1g")
-    spark.conf.set("spark.sql.shuffle.partitions", "3")
-    spark.conf.set("spark.driver.host", "localhost")
-    spark.conf.set("spark.ui.enabled", "true")
 
     val mapper = new ObjectMapper()
     mapper.registerModule(DefaultScalaModule)
@@ -44,7 +33,7 @@ object Demo {
       .toDF()
       .createOrReplaceTempView(employee)
 
-    spark.udf.register[CountWindowFunction]("count_window")
+    AggFunctionRegister.register[CountWindowFunction]("count_window")(spark)
 
     val sql = s"""
                  |select *
