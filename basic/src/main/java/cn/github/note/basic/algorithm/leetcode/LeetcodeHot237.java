@@ -4,6 +4,7 @@ import cn.github.note.basic.algorithm.model.ListNode;
 
 /**
  * 237. 删除链表中的节点
+ * tag: easy, linked list
  * <curl>https://leetcode.cn/problems/delete-node-in-a-linked-list/</curl>
  * 有一个单链表的 head，我们想删除它其中的一个节点 node。
  * 给你一个需要删除的节点 node 。你将 无法访问 第一个节点  head。

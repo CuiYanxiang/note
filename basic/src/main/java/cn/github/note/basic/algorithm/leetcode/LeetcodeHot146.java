@@ -2,6 +2,8 @@ package cn.github.note.basic.algorithm.leetcode;
 
 /**
  * 146. LRU 缓存
+ * tag: mid, design, linked-list, hash-table
+ * <curl>https://leetcode.cn/problems/lru-cache/description/?envType=problem-list-v2&envId=2cktkvj</curl>
  * 请你设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
  * 实现 LRUCache 类：
  * LRUCache(int capacity) 以 正整数 作为容量capacity 初始化 LRU 缓存

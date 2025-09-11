@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * 51. N 皇后
+ * tag: hard, array, backtracking
  * <curl>https://leetcode.cn/problems/n-queens/</curl>
  * 按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。
  * n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。

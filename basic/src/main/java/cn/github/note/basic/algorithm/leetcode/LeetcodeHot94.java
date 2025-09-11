@@ -9,6 +9,9 @@ import java.util.List;
 
 /**
  * 94. 二叉树的中序遍历
+ * tag: easy, stack, tree, depth-first-search, binary-tree
+ * <curl>https://leetcode.cn/problems/binary-tree-inorder-traversal/description/?envType=problem-list-v2&envId=2cktkvj</curl>
+ *
  * 给定一个二叉树的根节点 root ，返回 它的 中序 遍历 。
  * <p>
  * 示例 1：

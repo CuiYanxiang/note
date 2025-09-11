@@ -3,7 +3,8 @@ package cn.github.note.basic.algorithm.leetcode;
 import cn.github.note.basic.algorithm.model.TreeNode;
 
 /**
- * 148. 排序链表
+ * 236. 二叉树的最近公共祖先
+ * tag: medium, tree, depth-first search, binary tree
  * <curl>https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/</curl>
  * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
  * <p>

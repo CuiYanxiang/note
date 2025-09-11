@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 226. 翻转二叉树
+ * tag: easy, tree, depth-first-search, breadth-first-search, binary tree
  * <curl>https://leetcode.cn/problems/invert-binary-tree/</curl>
  * 给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。
  * <p>

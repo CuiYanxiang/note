@@ -5,6 +5,9 @@ import java.util.HashMap;
 
 /**
  * 1. 两数之和
+ * tag: easy, array, hash-table
+ * <p>https://leetcode.cn/problems/two-sum/description/?envType=problem-list-v2&envId=2cktkvj</p>
+ *
  * 给定一个整数数组nums 和一个整数target，返回这两个数字的索引，使它们加起来为target。
  * 您可能会假设每个输入都只有一个解决方案，并且您可能不会两次使用相同的元素。
  * <p>

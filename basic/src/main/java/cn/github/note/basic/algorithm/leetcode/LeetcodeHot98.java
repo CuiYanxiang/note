@@ -4,6 +4,7 @@ import cn.github.note.basic.algorithm.model.TreeNode;
 
 /**
  * 98. 验证二叉搜索树
+ * tag: mid, tree, depth-first-search, binary tree
  * <curl>https://leetcode.cn/problems/validate-binary-search-tree/</curl>
  * 给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。
  * 有效 二叉搜索树定义如下：

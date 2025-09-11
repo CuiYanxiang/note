@@ -4,6 +4,8 @@ import cn.github.note.basic.algorithm.model.ListNode;
 
 /**
  * 234. 回文链表
+ * tag: easy, linked-list, two pointers, stack
+ * <crul>https://leetcode.cn/problems/palindrome-linked-list/?envType=problem-list-v2&envId=2cktkvj</crul>
  * 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
  * <p>
  * 示例 1：

@@ -14,7 +14,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <arrow.version>17.0.0</arrow.version>
+        <arrow.version>18.2.0</arrow.version>
         <substrait.version>0.39.0</substrait.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

@@ -2,6 +2,9 @@ package cn.github.note.basic.algorithm.leetcode;
 
 /**
  * 10. 正则表达式匹配
+ * tag: hard, string, dynamic programming, recursion
+ * <p>https://leetcode.cn/problems/regular-expression-matching/description/?envType=problem-list-v2&envId=2cktkvj</p>
+ *
  * 给你一个字符串s和一个字符规律p，请你来实现一个支持 '.'和'*'的正则表达式匹配。
  * '.' 匹配任意单个字符
  * '*' 匹配零个或多个前面的那一个元素

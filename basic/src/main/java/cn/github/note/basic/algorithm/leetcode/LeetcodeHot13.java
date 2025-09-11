@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * 13. 罗马数字转整数
+ * tag: easy, math, string
  * 罗马数字包含以下七种字符:I，V，X，L，C，D和M。
  * 字符          数值
  * I             1

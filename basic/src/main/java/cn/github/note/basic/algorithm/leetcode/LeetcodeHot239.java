@@ -2,6 +2,8 @@ package cn.github.note.basic.algorithm.leetcode;
 
 /**
  * 239. 滑动窗口最大值
+ * tag: hard, array, sliding-window, monotonic-queue, deque
+ * <curl>https://leetcode.cn/problems/sliding-window-maximum/?envType=problem-list-v2&envId=2cktkvj</curl>
  * 给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
  * 返回 滑动窗口中的最大值 。
  * <p>

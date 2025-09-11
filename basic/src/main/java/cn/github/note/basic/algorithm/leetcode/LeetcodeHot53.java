@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * 53. 最大子数组和
+ * tag: mid, array, 分治，动态规划
+ * <curl>https://leetcode.cn/problems/maximum-subarray/description/?envType=problem-list-v2&envId=2cktkvj</curl>
+ *
  * 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
  * 子数组 是数组中的一个连续部分。
  * <p>

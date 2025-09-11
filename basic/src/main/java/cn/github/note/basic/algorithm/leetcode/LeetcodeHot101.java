@@ -6,6 +6,9 @@ import cn.github.note.basic.utils.TreeNodeUtil;
 
 /**
  * 101. 对称二叉树
+ * tag: easy, tree, depth-first-search, breadth-first-search, binary-tree
+ * <curl>https://leetcode.cn/problems/symmetric-tree/description/?envType=problem-list-v2&envId=2cktkvj</curl>
+ *
  * 给你一个二叉树的根节点 root ， 检查它是否轴对称。
  * <p>
  * 示例 1：

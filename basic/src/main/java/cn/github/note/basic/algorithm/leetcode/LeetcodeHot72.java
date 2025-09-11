@@ -2,6 +2,9 @@ package cn.github.note.basic.algorithm.leetcode;
 
 /**
  * 72. 编辑距离
+ * tag: hard, string, dynamic programming, trie
+ * <curl>https://leetcode.cn/problems/edit-distance/description/?envType=problem-list-v2&envId=2cktkvj</curl>
+ *
  * 给你两个单词word1 和word2， 请返回将word1转换成word2 所使用的最少操作数 。
  * 你可以对一个单词进行如下三种操作：
  * 1. 插入一个字符

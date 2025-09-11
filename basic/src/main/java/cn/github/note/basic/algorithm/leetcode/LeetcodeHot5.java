@@ -5,6 +5,8 @@ import java.util.Set;
 
 /**
  * 5. 最长回文子串 给你一个字符串 s，找到 s 中最长的回文子串。
+ * tag: medium, string, dynamic programming, two pointers
+ * <p>https://leetcode.cn/problems/longest-palindromic-substring/description/?envType=problem-list-v2&envId=2cktkvj</p>
  *
  * <p>示例 1： 输入：s = "babad" 输出："bab" 解释："aba" 同样是符合题意的答案。
  *

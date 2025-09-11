@@ -4,6 +4,8 @@ import cn.github.note.basic.algorithm.model.ListNode;
 
 /**
  * 206. 反转链表
+ * tag: easy, linked-list, 递归
+ * <curl>https://leetcode.cn/problems/reverse-linked-list/?envType=problem-list-v2&envId=2cktkvj</curl>
  * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
  * <p>
  * 示例 1：

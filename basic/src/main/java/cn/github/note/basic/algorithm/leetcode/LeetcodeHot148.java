@@ -4,6 +4,8 @@ import cn.github.note.basic.algorithm.model.ListNode;
 
 /**
  * 148. 排序链表
+ * tag: mid, linked-list, divide-and-conquer, sort, merge sort
+ * <curl>https://leetcode.cn/problems/sort-list/description/?envType=problem-list-v2&envId=2cktkvj</curl>
  * 给你链表的头结点head，请将其按 升序 排列并返回 排序后的链表 。
  * <p>
  * 示例 1：

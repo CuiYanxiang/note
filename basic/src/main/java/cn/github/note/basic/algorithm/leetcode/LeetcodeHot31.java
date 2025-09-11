@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * 31. 下一个排列
+ * tag: medium, array, two pointers
+ * <p>https://leetcode.cn/problems/next-permutation/description/?envType=problem-list-v2&envId=2cktkvj</p>
+ *
  * 整数数组的一个 排列 就是将其所有成员以序列或线性顺序排列。
  * <p>
  * 例如，arr = [1,2,3] ，以下这些都可以视作 arr 的排列：[1,2,3]、[1,3,2]、[3,1,2]、[2,3,1] 。

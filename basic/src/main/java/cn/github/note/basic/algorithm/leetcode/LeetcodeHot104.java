@@ -4,6 +4,8 @@ import cn.github.note.basic.algorithm.model.TreeNode;
 
 /**
  * 104. 二叉树的最大深度
+ * tag: easy, tree, depth-first-search, breadth-first-search, binary tree
+ * <curl>https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/?envType=problem-list-v2&envId=2cktkvj</curl>
  * 给定一个二叉树，找出其最大深度。
  * 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
  * 说明: 叶子节点是指没有子节点的节点。

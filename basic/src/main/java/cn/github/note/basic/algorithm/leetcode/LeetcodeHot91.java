@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * 91. 解码方法
+ * tag: medium, string, dynamic programming
  * 一条包含字母 A-Z 的消息通过以下映射进行了 编码 ：
  * <p>
  * 'A' -> "1"

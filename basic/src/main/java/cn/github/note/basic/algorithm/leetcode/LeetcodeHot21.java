@@ -5,6 +5,9 @@ import cn.github.note.basic.algorithm.model.ListNode;
 
 /**
  * 21. 合并两个有序链表
+ * tag: easy, linked-list, recursion
+ * <p>https://leetcode.cn/problems/merge-two-sorted-lists/description/?envType=problem-list-v2&envId=2cktkvj</p>
+ *
  * 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
  * <p>
  * 1  ----->  2  ----->  4

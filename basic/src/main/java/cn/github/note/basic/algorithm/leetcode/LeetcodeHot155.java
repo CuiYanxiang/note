@@ -2,6 +2,8 @@ package cn.github.note.basic.algorithm.leetcode;
 
 /**
  * 155. 最小栈
+ * tag: easy, stack, design
+ * <curl>https://leetcode.cn/problems/min-stack/description/?envType=problem-list-v2&envId=2cktkvj</curl>
  * 设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
  * <p>
  * 实现 MinStack 类:

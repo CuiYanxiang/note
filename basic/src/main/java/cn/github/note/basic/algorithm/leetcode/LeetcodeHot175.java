@@ -2,6 +2,7 @@ package cn.github.note.basic.algorithm.leetcode;
 
 /**
  * 175. 组合两个表
+ * tag: medium, database, sql
  * SQL架构
  * 表: Person
  * +-------------+---------+
