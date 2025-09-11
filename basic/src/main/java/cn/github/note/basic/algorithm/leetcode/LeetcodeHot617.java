@@ -29,7 +29,7 @@ public class LeetcodeHot617 {
     }
 
     public static TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
-
+        return null;
     }
 
     public class TreeNode {
